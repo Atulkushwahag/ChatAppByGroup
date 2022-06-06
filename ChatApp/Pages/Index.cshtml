@@ -1,0 +1,182 @@
+﻿@page
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        input[type=text], select, textarea {
+            width: 80%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+
+        label {
+            padding: 12px 12px 12px 0;
+            display: inline-block;
+        }
+
+        input[type=button] {
+            background-color: #04AA6D;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            float: right;
+        }
+
+            input[type=button]:hover {
+                background-color: #45a049;
+            }
+
+        .container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 18px;
+        }
+
+        .col-25 {
+            float: left;
+            width: 20%;
+            margin-top: 6px;
+        }
+
+        .col-75 {
+            float: left;
+            width: 70%;
+            margin-top: 6px;
+        }
+
+        /* Clear floats after the columns */
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+    </style>
+    
+    <style>
+        bodyChat {
+            margin: 0 auto;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .containerChat {
+            border: 2px solid #dedede;
+            background-color: #f1f1f1;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        .darker {
+            border-color: #ccc;
+            background-color: #ddd;
+        }
+
+        .containerChat::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .containerChat img {
+            float: left;
+            max-width: 60px;
+            width: 100%;
+            margin-right: 20px;
+            border-radius: 50%;
+        }
+
+            .containerChat img.right {
+                float: right;
+                margin-left: 20px;
+                margin-right: 0;
+            }
+
+        .time-right {
+            float: right;
+            color: #aaa;
+        }
+
+        .time-left {
+            float: left;
+            color: #999;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Chat app </h2>
+    <h2>New message<span id="counter"></span></h2>
+    <div class="container">
+        <form action="/action_page.php">
+            <div class="row">
+                <div class="col-25">
+                    <label for="fname">Group Name</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="groupName" name="groupName" placeholder="Group name..">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                </div>
+            </div>
+            <div class="row">
+                <input type="button" id="btnPrivateGroup" value="Join Group" />
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        <form action="/action_page.php">
+            <div class="row">
+                <div class="col-25">
+                    <label for="fname">User Name</label>
+                </div>
+                <div class="col-75">
+                    <input type="text" id="userName" name="firstname" placeholder="Your name..">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-25">
+                    <label for="subject">Message</label>
+                </div>
+                <div class="col-75">
+                    <textarea id="userMessage" name="subject" placeholder="Write something.." style="height:50px"></textarea>
+                </div>
+            </div>
+            <div class="row">
+                <input type="button" id="sendMessage" value="Send Message" />
+            </div>
+        </form>
+    </div>
+
+
+
+    <h2>Chat Messages</h2>
+
+    <div class="containerChat">
+
+        <ul id="messagesList"></ul>
+        <span class="time-right">11:00</span>
+    </div>
+
+
+</body>
+
+</html>
+
+
+<script src="~/lib/signalr/signalr.js"></script>
+<script src="~/js/chat.js"></script>
